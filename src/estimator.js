@@ -23,8 +23,6 @@ const calculateImpact = (number, data) => {
   };
 };
 
-
-
 const inputData = {
   region: {
     name: 'Africa',
@@ -32,11 +30,11 @@ const inputData = {
     avgDailyIncomeInUSD: 5,
     avgDailyIncomePopulation: 0.71
   },
-    periodType: "days",
-    timeToElapse: 27,
-    reportedCases: 674,
-    population: 66622705,
-    totalHospitalBeds: 1380614
+  periodType: "days",
+  timeToElapse: 27,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
 };
 
 const covid19ImpactEstimator = (data) => {
