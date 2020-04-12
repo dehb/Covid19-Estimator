@@ -23,6 +23,7 @@ const calculateImpact = (number, data) => {
     //  CHALLENGE 1
     currentlyInfected,
     infectionsByRequestedTime,
+    //  filler
     //  CHALLENGE 2
     severeCasesByRequestedTime,
     hospitalBedsByRequestedTime,
