@@ -1,5 +1,5 @@
 const calculateImpact = (number, data) => {
-  let hospitalBed = data.totalHospitalBeds;
+  const hospitalBed = data.totalHospitalBeds;
   const incomPop = data.region.avgDailyIncomePopulation;
   const incomUSD = data.region.avgDailyIncomeInUSD;
   const timElapse = data.timeToElapse;
@@ -42,10 +42,10 @@ const inputData = {
 };
 
 const covid19ImpactEstimator = (data) => ({
-    data,
-    impact: calculateImpact(10, inputData),
-    severeImpact: calculateImpact(50, inputData)
-  });
+  data,
+  impact: calculateImpact(10, inputData),
+  severeImpact: calculateImpact(50, inputData)
+});
 
 //  covid19ImpactEstimator(inputData);
 export default covid19ImpactEstimator;
