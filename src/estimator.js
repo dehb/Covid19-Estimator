@@ -3,9 +3,9 @@ const calculateImpact = (number, data) => {
   const incomPop = data.region.avgDailyIncomePopulation;
   const incomUSD = data.region.avgDailyIncomeInUSD;
  
-  if (data.periodType === 'weeks'){
+  if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
-  }else if (data.periodType === 'months'){
+  } else if (data.periodType === 'months') {
     data.timeToElapse *= 30;
   }
   const days = data.timeToElapse;
@@ -13,7 +13,7 @@ const calculateImpact = (number, data) => {
 
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
-  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor((days / 3)));
+  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor((factor / 3)));
   //  CHALLENGE 2
   const severeCasesByRequestedTime = Math.floor((15 / 100) * infectionsByRequestedTime);
   const hospitalBedsByRequestedTime = severeCasesByRequestedTime - Math.floor(0.35 * hospitalBed);
