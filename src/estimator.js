@@ -1,6 +1,6 @@
 const calculateImpact = (number, data) => {
 // const calculateImpact = (data) => {
-  //    const hospitalBed = data.totalHospitalBeds;
+  //    const hosBed = data.totalHospitalBeds;
   //    const incomPop = data.region.avgDailyIncomePopulation;
   //    const incomUSD = data.region.avgDailyIncomeInUSD;
   //    convert time to elapse
@@ -9,7 +9,7 @@ const calculateImpact = (number, data) => {
   } else if (data.periodType === 'months') {
     data.timeToElapse *= 30;
   }
-  const timElapse = data.timeToElapse;
+  const time = data.timeToElapse;
   const factor = Math.trunc(timElapse / 3);
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
@@ -17,15 +17,15 @@ const calculateImpact = (number, data) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   //  CHALLENGE 2
   //    const severeCasesByRequestedTime = Math.floor((15 / 100) * infectionsByRequestedTime);
-  //    const hospitalBedsByRequestedTime = severeCasesByRequestedTime - Math.floor(0.35 * hospitalBed);
+  //    const hospitalBedsByRequestedTime = severeCasesByRequestedTime - Math.floor(0.35 * hosBed);
   //  CHALLENGE 3
   //    const casesForICUByRequestedTime = Math.floor((5 / 100) * infectionsByRequestedTime);
-  //    const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTime);
-  //    const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * timElapse);
+  //    const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTim);
+  //    const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * time);
   return {
     //  CHALLENGE 1
     currentlyInfected,
-    infectionsByRequestedTime,
+    infectionsByRequestedTime
     //  CHALLENGE 2
     //  severeCasesByRequestedTime,
     //  hospitalBedsByRequestedTime,
