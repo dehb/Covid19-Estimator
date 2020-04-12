@@ -8,7 +8,7 @@ const calculateImpact = (number, data) => {
     data.timeToElapse *= 30;
   }
   const timElapse = data.timeToElapse;
-  const factor = Math.trunc(days / 3);
+  const factor = Math.trunc(timElapse / 3);
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
