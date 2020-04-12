@@ -1,5 +1,5 @@
-// const calculateImpact = (number, data) => {
-const calculateImpact = (data) => {
+const calculateImpact = (number, data) => {
+// const calculateImpact = (data) => {
   const hospitalBed = data.totalHospitalBeds;
   const incomPop = data.region.avgDailyIncomePopulation;
   const incomUSD = data.region.avgDailyIncomeInUSD;
@@ -11,8 +11,8 @@ const calculateImpact = (data) => {
   const timElapse = data.timeToElapse;
   const factor = Math.trunc(timElapse / 3);
   //  CHALLENGE 1
-  //   const currentlyInfected = data.reportedCases * number;
-  const currentlyInfected = data.reportedCases * 10;
+  const currentlyInfected = data.reportedCases * number;
+  //   const currentlyInfected = data.reportedCases * 10;
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   //  CHALLENGE 2
   const severeCasesByRequestedTime = Math.floor((15 / 100) * infectionsByRequestedTime);
@@ -37,9 +37,9 @@ const calculateImpact = (data) => {
 
 const covid19ImpactEstimator = (data) => ({
   data,
-  //   impact: calculateImpact(10, data),
-  //   severeImpact: calculateImpact(50, data)
-  impact: calculateImpact(data),
-  severeImpact: calculateImpact(data)
+  impact: calculateImpact(10, data),
+  severeImpact: calculateImpact(50, data)
+  //   impact: calculateImpact(data),
+  //   severeImpact: calculateImpact(data)
 });
 export default covid19ImpactEstimator;
