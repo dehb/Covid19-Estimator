@@ -2,7 +2,7 @@ const calculateImpact = (number, data) => {
   const hospitalBed = data.totalHospitalBeds;
   const incomPop = data.region.avgDailyIncomePopulation;
   const incomUSD = data.region.avgDailyIncomeInUSD;
-   if (data.periodType === 'weeks') {
+  if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
   } else if (data.periodType === 'months') {
     data.timeToElapse *= 30;
