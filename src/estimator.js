@@ -2,15 +2,13 @@ const calculateImpact = (number, data) => {
   const hospitalBed = data.totalHospitalBeds;
   const incomPop = data.region.avgDailyIncomePopulation;
   const incomUSD = data.region.avgDailyIncomeInUSD;
- 
-  if (data.periodType === 'weeks') {
+   if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
   } else if (data.periodType === 'months') {
     data.timeToElapse *= 30;
   }
   const days = data.timeToElapse;
   const factor = Math.trunc(days / 3);
-
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor((factor / 3)));
