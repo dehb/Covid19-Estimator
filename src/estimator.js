@@ -1,9 +1,8 @@
 const calculateImpact = (number, data) => {
-
-  var hospitalBed = data.totalHospitalBeds;
-  var incomePop = data.region.avgDailyIncomePopulation ;
-  var incomeUSD = data.region.avgDailyIncomeInUSD;
-  var timeElapse = data.timeToElapse
+  let hospitalBed = data.totalHospitalBeds;
+  const incomPop = data.region.avgDailyIncomePopulation;
+  const incomUSD = data.region.avgDailyIncomeInUSD;
+  const timElapse = data.timeToElapse;
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor((data.timeToElapse / 3)));
@@ -13,7 +12,7 @@ const calculateImpact = (number, data) => {
   //  CHALLENGE 3
   const casesForICUByRequestedTime = Math.floor((5 / 100) * infectionsByRequestedTime);
   const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTime);
-  const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomePop * incomeUSD * timeElapse);
+  const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * timElapse);
   return {
     //  CHALLENGE 1
     currentlyInfected,
@@ -42,13 +41,13 @@ const inputData = {
   totalHospitalBeds: 1380614
 };
 
-const covid19ImpactEstimator = (data) => {
-  return {
+const covid19ImpactEstimator = (data) => ({
+//   return {
     data,
     impact: calculateImpact(10, inputData),
     severeImpact: calculateImpact(50, inputData)
-  };
-};
+  });
+// };
 
 //  covid19ImpactEstimator(inputData);
 export default covid19ImpactEstimator;
