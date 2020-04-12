@@ -7,7 +7,7 @@ const calculateImpact = (number, data) => {
   } else if (data.periodType === 'months') {
     data.timeToElapse *= 30;
   }
-  const days = data.timeToElapse;
+  const timElapse = data.timeToElapse;
   const factor = Math.trunc(days / 3);
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
@@ -18,7 +18,7 @@ const calculateImpact = (number, data) => {
   //  CHALLENGE 3
   const casesForICUByRequestedTime = Math.floor((5 / 100) * infectionsByRequestedTime);
   const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTime);
-  const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * days);
+  const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * timElapse);
   return {
     //  CHALLENGE 1
     currentlyInfected,
