@@ -15,21 +15,19 @@ const calculateImpact = (number, data) => {
   const factor = Math.trunc(days / 3);
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
-  //    const currentlyInfected = data.reportedCases * 10;
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   //  CHALLENGE 2
   const severeCasesByRequestedTime = Math.trunc((15 / 100) * infectionsByRequestedTime);
   const hospitalBedsByRequestedTime = Math.trunc((0.35 * hosBed) - severeCasesByRequestedTime);
   //  CHALLENGE 3
-  const casesForICUByRequestedTime = Math.floor((5 / 100) * infectionsByRequestedTime);
-  const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTime);
-  const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * days);
+  const casesForICUByRequestedTime = Math.trunc((5 / 100) * infectionsByRequestedTime);
+  const casesForVentilatorsByRequestedTime = Math.trunc((2 / 100) * infectionsByRequestedTime);
+  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * incomPop * incomUSD * days);
   return {
     //  CHALLENGE 1
     currentlyInfected,
     infectionsByRequestedTime,
     //  CHALLENGE 2
-    //  space
     severeCasesByRequestedTime,
     hospitalBedsByRequestedTime,
     //  CHALLENGE 3
