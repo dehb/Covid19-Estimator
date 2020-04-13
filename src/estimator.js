@@ -5,7 +5,9 @@ const calculateImpact = (number, data) => {
   const incomUSD = data.region.avgDailyIncomeInUSD;
   //  convert time to elapse
   let days = 0;
-  if (data.periodType === 'weeks') {
+  if (data.periodType === 'days') {
+    days = data.timeToElapse;
+  } else if (data.periodType === 'weeks') {
     days = data.timeToElapse * 7;
   } else if (data.periodType === 'months') {
     days = data.timeToElapse * 30;
