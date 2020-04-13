@@ -20,7 +20,7 @@ const calculateImpact = (number, data) => {
   const hospitalBedsByRequestedTime = severeCasesByRequestedTime - Math.floor(0.35 * hosBed);
   //  CHALLENGE 3
   const casesForICUByRequestedTime = Math.floor((5 / 100) * infectionsByRequestedTime);
-  const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTim);
+  const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTime);
   const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * days);
   return {
     //  CHALLENGE 1
