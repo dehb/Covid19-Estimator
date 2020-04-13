@@ -1,6 +1,7 @@
 const calculateImpact = (number, data) => {
+// const calculateImpact = (data) => {
   const hosBed = data.totalHospitalBeds;
-  const Pop = data.region.avgDailyIncomePopulation;
+  const incomPop = data.region.avgDailyIncomePopulation;
   const incomUSD = data.region.avgDailyIncomeInUSD;
   //  convert time to elapse
   let days = 0;
@@ -19,9 +20,9 @@ const calculateImpact = (number, data) => {
   const severeCasesByRequestedTime = Math.trunc((15 / 100) * infectionsByRequestedTime);
   const hospitalBedsByRequestedTime = Math.trunc((0.35 * hosBed) - severeCasesByRequestedTime);
   //  CHALLENGE 3
-  const casesForICUByRequestedTime = Math.ceil(0.05 * infectionsByRequestedTime);
-  const casesForVentilatorsByRequestedTime = Math.ceil(0.02 * infectionsByRequestedTime);
-  const dollarsInFlight = Math.ceil((infectionsByRequestedTime * Pop * incomUSD) / days);
+  const casesForICUByRequestedTime = Math.floor(0.05 * infectionsByRequestedTime);
+  const casesForVentilatorsByRequestedTime = Math.floor(0.02 * infectionsByRequestedTime);
+  const dollarsInFlight = Math.floor((infectionsByRequestedTime * incomPop * incomUSD) / days);
   return {
     //  CHALLENGE 1
     currentlyInfected,
