@@ -18,7 +18,7 @@ const calculateImpact = (number, data) => {
   //    const currentlyInfected = data.reportedCases * 10;
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   //  CHALLENGE 2
-  const severeCasesByRequestedTime = Math.floor((15 / 100) * infectionsByRequestedTime);
+  const severeCasesByRequestedTime = (15 / 100) * infectionsByRequestedTime;
   const hospitalBedsByRequestedTime = severeCasesByRequestedTime - Math.floor(0.35 * hosBed);
   //  CHALLENGE 3
   const casesForICUByRequestedTime = Math.floor((5 / 100) * infectionsByRequestedTime);
