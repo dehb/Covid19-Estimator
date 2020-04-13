@@ -10,7 +10,7 @@ const calculateImpact = (number, data) => {
     data.timeToElapse *= 30;
   }
   const time = data.timeToElapse;
-  const factor = Math.trunc(timElapse / 3);
+  const factor = Math.trunc(time / 3);
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
   //   const currentlyInfected = data.reportedCases * 10;
