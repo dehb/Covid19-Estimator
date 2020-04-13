@@ -22,7 +22,7 @@ const calculateImpact = (number, data) => {
   //  CHALLENGE 3
   const casesForICUByRequestedTime = Math.floor(0.05 * infectionsByRequestedTime);
   const casesForVentilatorsByRequestedTime = Math.floor(0.02 * infectionsByRequestedTime);
-  const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * days);
+  const dollarsInFlight = Math.floor((infectionsByRequestedTime * incomPop * incomUSD) / days);
   return {
     //  CHALLENGE 1
     currentlyInfected,
