@@ -5,12 +5,12 @@ const calculateImpact = (number, data) => {
   //    const incomUSD = data.region.avgDailyIncomeInUSD;
   //    convert time to elapse
   if (data.periodType === 'weeks') {
-    data.timeToElapse *= 7;
+    days = data.timeToElapse * 7;
   } else if (data.periodType === 'months') {
-    data.timeToElapse *= 30;
+    days = data.timeToElapse * 30;
   }
-  const time = data.timeToElapse;
-  const factor = Math.trunc(time / 3);
+  const days = data.timeToElapse;
+  const factor = Math.trunc(days / 3);
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
   //   const currentlyInfected = data.reportedCases * 10;
@@ -21,7 +21,7 @@ const calculateImpact = (number, data) => {
   //  CHALLENGE 3
   //    const casesForICUByRequestedTime = Math.floor((5 / 100) * infectionsByRequestedTime);
   //    const casesForVentilatorsByRequestedTime = Math.floor((2 / 100) * infectionsByRequestedTim);
-  //    const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * time);
+  //    const dollarsInFlight = Math.floor(infectionsByRequestedTime * incomPop * incomUSD * days);
   return {
     //  CHALLENGE 1
     currentlyInfected,
