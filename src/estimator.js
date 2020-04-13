@@ -9,7 +9,7 @@ const calculateImpact = (number, data) => {
   } else if (data.periodType === 'months') {
     days = data.timeToElapse * 30;
   }
-  const days = data.timeToElapse;
+  let days = data.timeToElapse;
   const factor = Math.trunc(days / 3);
   //  CHALLENGE 1
   const currentlyInfected = data.reportedCases * number;
