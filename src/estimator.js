@@ -60,8 +60,8 @@ const calculateImpact = (number, data) => {
   const factor = Math.trunc(days / 3);
   // impact.currentlyInfected = data.reportedCases * 10;
   // severeImpact.currentlyInfected = data.reportedCases * 50;
-  currentlyInfected = data.reportedCases * number;
-  infectionsByRequestedTime = currentlyInfected * (2 ** factor);
+  const currentlyInfected = data.reportedCases * number;
+  const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   // impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
   // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
   // impact.severeCasesByRequestedTime = (15 / 100) * impact.infectionsByRequestedTime;
@@ -76,11 +76,11 @@ const calculateImpact = (number, data) => {
   // impact.casesForICUByRequestedTime = Math.floor(0.05 * impact.infectionsByRequestedTime);
   // severeImpact.casesForICUByRequestedTime = Math.floor(0.05 * severeImpactInfection);
 
-  // impact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * impact.infectionsByRequestedTime);
+  // impa.casesForVentilatorsByRequestedTime = Math.floor(0.02 * impact.infectionsByRequestedTime);
   // severeImpact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * severeImpactInfection);
   // const impactInfection = impact.infectionsByRequestedTime;
   // impact.dollarsInFlight = Math.floor((impactInfection * incomPop * incomUSD) / days);
-  // severeImpact.dollarsInFlight = Math.floor((severeImpactInfection * incomPop * incomUSD) / days);
+  // Impact.dollarsInFlight = Math.floor((severeImpactInfection * incomPop * incomUSD) / days);
 
   return {
     // data,
@@ -93,8 +93,8 @@ const calculateImpact = (number, data) => {
 
 
 const covid19ImpactEstimator = (data) => ({
-    data,
-    impact: calculateImpact(10, data),
-    severeImpact: calculateImpact(50, data)
-  });
+  data,
+  impact: calculateImpact(10, data),
+  severeImpact: calculateImpact(50, data)
+});
 export default covid19ImpactEstimator;
