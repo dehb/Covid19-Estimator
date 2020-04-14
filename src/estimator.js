@@ -100,7 +100,7 @@ const calculateImpact = (number, data) => {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime    
+    hospitalBedsByRequestedTime
   };
 };
 
