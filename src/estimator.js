@@ -50,12 +50,13 @@ const calculateImpact = (number, data) => {
   // const hosBed = 0.35 * data.totalHospitalBeds;
   // const incomPop = data.region.avgDailyIncomePopulation;
   // const incomUSD = data.region.avgDailyIncomeInUSD;
+  let days
   if (data.periodType === 'days') {
-    data.timeToElapse = data.timeToElapse;
+    days = data.timeToElapse;
   } else if (data.periodType === 'weeks') {
-    data.timeToElapse *= 7;
+    days = data.timeToElapse * 7;
   } else if (data.periodType === 'months') {
-    data.timeToElapse *= 30;
+    days = data.timeToElapse * 30;
   }
 
   // let days = 0;
@@ -66,7 +67,7 @@ const calculateImpact = (number, data) => {
   //   } else if (data.periodType === 'months') {
   //     days = data.timeToElapse * 30;
   //   }
-  const days = data.timeToElapse;
+  // const days = data.timeToElapse;
   const factor = Math.trunc(days / 3);
   // impact.currentlyInfected = data.reportedCases * 10;
   // severeImpact.currentlyInfected = data.reportedCases * 50;
