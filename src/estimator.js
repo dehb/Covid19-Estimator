@@ -84,13 +84,13 @@ const calculateImpact = (number, data) => {
   // severeImpact.hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCases);
 
   // const severeImpactInfection = severeImpact.infectionsByRequestedTime;
-  // impact.casesForICUByRequestedTime = Math.floor(0.05 * impact.infectionsByRequestedTime);
+  const casesForICUByRequestedTime = Math.floor(0.05 * infectionsByRequestedTime);
   // severeImpact.casesForICUByRequestedTime = Math.floor(0.05 * severeImpactInfection);
 
-  // impa.casesForVentilatorsByRequestedTime = Math.floor(0.02 * impact.infectionsByRequestedTime);
+  const casesForVentilatorsByRequestedTime = Math.floor(0.02 * infectionsByRequestedTime);
   // severeImpact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * severeImpactInfection);
-  // const impactInfection = impact.infectionsByRequestedTime;
-  // impact.dollarsInFlight = Math.floor((impactInfection * incomPop * incomUSD) / days);
+  const impactInfection = infectionsByRequestedTime;
+  const dollarsInFlight = Math.floor((impactInfection * incomPop * incomUSD) / days);
   // Impact.dollarsInFlight = Math.floor((severeImpactInfection * incomPop * incomUSD) / days);
 
   return {
@@ -100,7 +100,10 @@ const calculateImpact = (number, data) => {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime
+    hospitalBedsByRequestedTime,
+    casesForICUByRequestedTime,
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
