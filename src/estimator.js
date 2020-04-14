@@ -44,12 +44,12 @@
 // });
 // export default covid19ImpactEstimator;
 
-const covid19ImpactEstimator = (data) => {
-  const impact = {};
-  const severeImpact = {};
-  const hosBed = 0.35 * data.totalHospitalBeds;
-  const incomPop = data.region.avgDailyIncomePopulation;
-  const incomUSD = data.region.avgDailyIncomeInUSD;
+const calculateImpact = (number, data) => {
+  // const impact = {};
+  // const severeImpact = {};
+  // const hosBed = 0.35 * data.totalHospitalBeds;
+  // const incomPop = data.region.avgDailyIncomePopulation;
+  // const incomUSD = data.region.avgDailyIncomeInUSD;
 
   if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
@@ -58,32 +58,43 @@ const covid19ImpactEstimator = (data) => {
   }
   const days = data.timeToElapse;
   const factor = Math.trunc(days / 3);
-  impact.currentlyInfected = data.reportedCases * 10;
-  severeImpact.currentlyInfected = data.reportedCases * 50;
-  impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
-  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
-  impact.severeCasesByRequestedTime = (15 / 100) * impact.infectionsByRequestedTime;
-  severeImpact.severeCasesByRequestedTime = (15 / 100) * severeImpact.infectionsByRequestedTime;
+  // impact.currentlyInfected = data.reportedCases * 10;
+  // severeImpact.currentlyInfected = data.reportedCases * 50;
+  currentlyInfected = data.reportedCases * number;
+  infectionsByRequestedTime = currentlyInfected * (2 ** factor);
+  // impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
+  // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
+  // impact.severeCasesByRequestedTime = (15 / 100) * impact.infectionsByRequestedTime;
+  // severeImpact.severeCasesByRequestedTime = (15 / 100) * severeImpact.infectionsByRequestedTime;
 
-  const impactCases = impact.severeCasesByRequestedTime;
-  const severeCases = severeImpact.severeCasesByRequestedTime;
-  impact.hospitalBedsByRequestedTime = Math.ceil(hosBed - impactCases);
-  severeImpact.hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCases);
+  // const impactCases = impact.severeCasesByRequestedTime;
+  // const severeCases = severeImpact.severeCasesByRequestedTime;
+  // impact.hospitalBedsByRequestedTime = Math.ceil(hosBed - impactCases);
+  // severeImpact.hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCases);
 
-  const severeImpactInfection = severeImpact.infectionsByRequestedTime;
-  impact.casesForICUByRequestedTime = Math.floor(0.05 * impact.infectionsByRequestedTime);
-  severeImpact.casesForICUByRequestedTime = Math.floor(0.05 * severeImpactInfection);
+  // const severeImpactInfection = severeImpact.infectionsByRequestedTime;
+  // impact.casesForICUByRequestedTime = Math.floor(0.05 * impact.infectionsByRequestedTime);
+  // severeImpact.casesForICUByRequestedTime = Math.floor(0.05 * severeImpactInfection);
 
-  impact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * impact.infectionsByRequestedTime);
-  severeImpact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * severeImpactInfection);
-  const impactInfection = impact.infectionsByRequestedTime;
-  impact.dollarsInFlight = Math.floor((impactInfection * incomPop * incomUSD) / days);
-  severeImpact.dollarsInFlight = Math.floor((severeImpactInfection * incomPop * incomUSD) / days);
+  // impact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * impact.infectionsByRequestedTime);
+  // severeImpact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * severeImpactInfection);
+  // const impactInfection = impact.infectionsByRequestedTime;
+  // impact.dollarsInFlight = Math.floor((impactInfection * incomPop * incomUSD) / days);
+  // severeImpact.dollarsInFlight = Math.floor((severeImpactInfection * incomPop * incomUSD) / days);
 
   return {
-    data,
-    impact,
-    severeImpact
+    // data,
+    // impact,
+    // severeImpact
+    currentlyInfected,
+    infectionsByRequestedTime
   };
 };
+
+
+const covid19ImpactEstimator = (data) => ({
+    data,
+    impact: calculateImpact(10, data),
+    severeImpact: calculateImpact(50, data)
+  });
 export default covid19ImpactEstimator;
