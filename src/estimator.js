@@ -48,8 +48,8 @@ const calculateImpact = (number, data) => {
   // const impact = {};
   // const severeImpact = {};
   const hosBed = 0.35 * data.totalHospitalBeds;
-  // const incomPop = data.region.avgDailyIncomePopulation;
-  // const incomUSD = data.region.avgDailyIncomeInUSD;
+  const incomPop = data.region.avgDailyIncomePopulation;
+  const incomUSD = data.region.avgDailyIncomeInUSD;
   let days;
   if (data.periodType === 'days') {
     days = data.timeToElapse;
