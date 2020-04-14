@@ -47,7 +47,7 @@
 const calculateImpact = (number, data) => {
   // const impact = {};
   // const severeImpact = {};
-  const hosBed = Math.floor(0.35 * data.totalHospitalBeds);
+  const hosBed = 0.35 * data.totalHospitalBeds;
   // const incomPop = data.region.avgDailyIncomePopulation;
   // const incomUSD = data.region.avgDailyIncomeInUSD;
   let days;
@@ -75,12 +75,12 @@ const calculateImpact = (number, data) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   // impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
   // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
-  const severeCasesByRequestedTime = Math.floor((15 / 100) * infectionsByRequestedTime);
+  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   // severeImpact.severeCasesByRequestedTime = (15 / 100) * severeImpact.infectionsByRequestedTime;
 
   // const impactCases = severeCasesByRequestedTime;
   // const severeCases = severeImpact.severeCasesByRequestedTime;
-  const hospitalBedsByRequestedTime = hosBed - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCasesByRequestedTime);
   // severeImpact.hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCases);
 
   // const severeImpactInfection = severeImpact.infectionsByRequestedTime;
