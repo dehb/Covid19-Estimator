@@ -80,7 +80,7 @@ const calculateImpact = (number, data) => {
 
   // const impactCases = severeCasesByRequestedTime;
   // const severeCases = severeImpact.severeCasesByRequestedTime;
-  const hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCasesByRequestedTime);
+  const hospitalBedsByRequestedTime = Math.floor(hosBed - severeCasesByRequestedTime);
   // severeImpact.hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCases);
 
   // const severeImpactInfection = severeImpact.infectionsByRequestedTime;
