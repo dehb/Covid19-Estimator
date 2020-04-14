@@ -47,7 +47,7 @@
 const calculateImpact = (number, data) => {
   // const impact = {};
   // const severeImpact = {};
-  // const hosBed = 0.35 * data.totalHospitalBeds;
+  const hosBed = 0.35 * data.totalHospitalBeds;
   // const incomPop = data.region.avgDailyIncomePopulation;
   // const incomUSD = data.region.avgDailyIncomeInUSD;
   let days;
@@ -75,12 +75,12 @@ const calculateImpact = (number, data) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
   // impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
   // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
-  // impact.severeCasesByRequestedTime = (15 / 100) * impact.infectionsByRequestedTime;
+  const severeCasesByRequestedTime = (15 / 100) * infectionsByRequestedTime;
   // severeImpact.severeCasesByRequestedTime = (15 / 100) * severeImpact.infectionsByRequestedTime;
 
-  // const impactCases = impact.severeCasesByRequestedTime;
+  // const impactCases = severeCasesByRequestedTime;
   // const severeCases = severeImpact.severeCasesByRequestedTime;
-  // impact.hospitalBedsByRequestedTime = Math.ceil(hosBed - impactCases);
+  const hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCasesByRequestedTime);
   // severeImpact.hospitalBedsByRequestedTime = Math.ceil(hosBed - severeCases);
 
   // const severeImpactInfection = severeImpact.infectionsByRequestedTime;
@@ -98,7 +98,9 @@ const calculateImpact = (number, data) => {
     // impact,
     // severeImpact
     currentlyInfected,
-    infectionsByRequestedTime
+    infectionsByRequestedTime,
+    severeCasesByRequestedTime,
+    hospitalBedsByRequestedTime    
   };
 };
 
